@@ -1,9 +1,12 @@
-﻿namespace Amnesty
+﻿using System.Linq;
+
+namespace Amnesty
 {
     class Catalog
     {
         private Random _random = new Random();
         private List<Criminal> _criminals = new List<Criminal>();
+        private string _antigovernmentCrime = "Антиправительственное";
 
         public Catalog()
         {
@@ -12,12 +15,7 @@
 
         public void Amnesty()
         {
-            var criminals = (from criminal in _criminals where criminal.Crime == "Антиправительственное" select criminal).ToList();
-
-            foreach (var criminal in criminals)
-            {
-                _criminals.Remove(criminal);
-            }
+            _criminals = (_criminals.Where(criminal => criminal.Crime != _antigovernmentCrime)).ToList();
 
             Console.WriteLine("Прошла амнистия!\n");
         }
