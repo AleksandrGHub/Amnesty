@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace Amnesty
+﻿namespace Amnesty
 {
     class Catalog
     {
